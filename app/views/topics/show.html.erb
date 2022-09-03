@@ -1,0 +1,11 @@
+<h1><%= @topic.title %></h1>
+
+<p><%= @topic.body %></p>
+
+<ul>
+  <li><%= link_to "Edit", edit_topic_path(@topic) %></li>
+  <li><%= link_to "Delete", topic_path(@topic), data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+                  } %></li>
+</ul>
