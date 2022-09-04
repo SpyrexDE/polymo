@@ -8,9 +8,16 @@
     <%= turbo_include_tags %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_include_tag "https://cdn.tailwindcss.com" %>
+    <%= stylesheet_link_tag "https://cdn.jsdelivr.net/npm/daisyui@2.24.0/dist/full.css" %>
+    <%= stylesheet_link_tag "https://cdn.jsdelivr.net/npm/theme-change@2.0.2/index.js" %> <!--https://github.com/saadeghi/theme-change-->
+
   </head>
 
   <body>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    <%= render "layouts/navbar" %>
     <%= yield %>
   </body>
 </html>

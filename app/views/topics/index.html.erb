@@ -1,4 +1,4 @@
-<h1>Topics</h1>
+<h1 class="prose">Topics</h1>
 <ul>
   <% @topics.each do |topic| %>
     <li>
@@ -8,4 +8,4 @@
   <% end %>
 </ul>
 
-<%= link_to "New Topic", new_topic_path %>
+<%= link_to "New Topic", new_topic_path, class: "btn btn-primary" %>

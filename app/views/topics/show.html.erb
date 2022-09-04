@@ -3,6 +3,7 @@
 <p><%= @topic.body %></p>
 
 <ul>
+  <%= @member_signed_in %>
   <li><%= link_to "Edit", edit_topic_path(@topic) %></li>
   <li><%= link_to "Delete", topic_path(@topic), data: {
                     turbo_method: :delete,
