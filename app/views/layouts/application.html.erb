@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-theme="light">
+<html>
   <head>
     <title>Mooted</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -21,6 +21,9 @@
         tailwind.config = {
             theme: {
                 extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
                     colors: {
                         clifford: '#da373d',
                     }
@@ -37,5 +40,7 @@
     <%= render "layouts/alert"%>
     <%= render "layouts/navbar" %>
     <%= yield %>
+
+    <%= javascript_include_tag "https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js" %>
   </body>
 </html>

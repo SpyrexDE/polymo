@@ -1,6 +1,12 @@
 <%= turbo_frame_tag dom_id(topic) do%>
-  <li>
-    <h4><%= link_to topic.title, topic %></h4>
-    <p><%= topic.body%></p>
-  </li>
+  <div class="card bg-base-100 shadow-xl mb-5">
+    <img class="object-cover" src="https://placeimg.com/400/225/arch" />
+    <div class="card-body">
+      <h2 class="card-title"><%= topic.title %></h2>
+        <p><%= topic.body%></p>
+      <div class="card-actions justify-end">
+        <%= link_to "Open", topic, class: "btn btn-primary", data: { "turbo-frame": "_top" } %>
+      </div>
+    </div>
+  </div>
 <% end %>

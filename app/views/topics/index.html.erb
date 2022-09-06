@@ -1,14 +1,18 @@
-<div class="prose">
-  <h1>Topics</h1>
+<div  class="place-content-center w-full grid grid-cols-1 md:grid-cols-2 ">
+
+  <div class="col-start-1">
+
+  </div>
+
+  <div class="col-start-2">
+    <%= turbo_stream_from "topics"%>
+    <%= turbo_frame_tag "topics" do %>
+        <% @topics.each do |topic| %>
+          <%= render "topics/topic", topic: topic %>
+        <% end %>
+    <% end %>
+    <%= render "topic_new"%>
+  </div>
+
 </div>
 
-<ul>
-  <%= turbo_stream_from "topics"%>
-  <%= turbo_frame_tag "topics" do %>
-      <% @topics.each do |topic| %>
-        <%= render "topics/topic", topic: topic %>
-      <% end %>
-  <% end %>
-</ul>
-
-<%= link_to "New Topic", new_topic_path, class: "btn btn-primary" %>

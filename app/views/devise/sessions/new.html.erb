@@ -1,24 +1,24 @@
 
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name), :html => {:class =>  "card p-10 bg-gray-100 w-96"}) do |f| %>
+<%= form_for(resource, as: resource_name, url: session_path(resource_name), :html => {:class =>  "card glass p-10 w-96 m-auto"}) do |f| %>
   <h3 class="text-5xl"><strong>Log in</strong></h3>
   <div class="field form-control w-full">
     <label class="label">
       <%= f.label :email, class: "label-text"  %>
     </label>
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "input w-full" %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "input input-bordered w-full" %>
   </div>
 
   <div class="form-control w-full">
     <label class="label">
       <%= f.label :password, class: "label-text"  %>
     </label>
-    <%= f.password_field :password, autocomplete: "current-password", class: "input w-full" %>
+    <%= f.password_field :password, autocomplete: "current-password", class: "input input-bordered w-full" %>
   </div>
 
   <% if devise_mapping.rememberable? %>
     <div class="form-control w-full flow-root">
-      <label class="label">
+      <label class="label my-2">
         <%= f.check_box :remember_me, class: "toggle toggle-primary" %>
         <%= f.label :remember_me, class: "label-text flex-auto ml-2" %>
       </label>
