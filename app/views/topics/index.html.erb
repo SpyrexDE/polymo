@@ -3,11 +3,11 @@
 </div>
 
 <ul>
-  <% @topics.each do |topic| %>
-    <li>
-      <h4><%= link_to topic.title, topic %></h4>
-      <p><%= topic.body%></p>
-    </li>
+  <%= turbo_stream_from "topics"%>
+  <%= turbo_frame_tag "topics" do %>
+      <% @topics.each do |topic| %>
+        <%= render "topics/topic", topic: topic %>
+      <% end %>
   <% end %>
 </ul>
 

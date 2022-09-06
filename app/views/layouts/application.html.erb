@@ -7,15 +7,30 @@
     <%= csp_meta_tag %>
     <%= turbo_include_tags %>
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-
     <%= javascript_include_tag "https://cdn.tailwindcss.com" %>
     <%= javascript_include_tag "https://cdn.jsdelivr.net/npm/@tailwindcss/typography@0.5.7/src/index.min.js" %>
-    <%= stylesheet_link_tag "https://cdn.jsdelivr.net/npm/daisyui@2.24.0/dist/full.css" %>
     <%= stylesheet_link_tag "https://unpkg.com/@tailwindcss/typography@0.1.2/dist/typography.min.css" %>
+
+    <%= stylesheet_link_tag "https://cdn.jsdelivr.net/npm/daisyui@2.24.0/dist/full.css" %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
 
     <%= javascript_include_tag "https://cdn.jsdelivr.net/npm/theme-change@2.0.2/index.js" %> <!--https://github.com/saadeghi/theme-change-->
 
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        clifford: '#da373d',
+                    }
+                }
+            },
+            corePlugins: {
+                preflight: false,
+            }
+        }
+    </script>
   </head>
 
   <body>
