@@ -19,9 +19,9 @@ class TopicsController < ApplicationController
     @topic = Topic.new(topic_params)
 
     if @topic.save
-      redirect_to @topic
+      redirect_to @topic, flash: { success: I18n.t("topic_create_success") }
     else
-      render :new, status: :unprocessable_entity
+      render :new, status: :unprocessable_entity, flash: { error: I18n.t("topic_create_unprocessable") }
     end
   end
 
@@ -33,9 +33,9 @@ class TopicsController < ApplicationController
     @topic = Topic.find(params[:id])
 
     if @topic.update(topic_params)
-      redirect_to @topic
+      redirect_to @topic, flash: { success: I18n.t("topic_update_success") }
     else
-      render :edit, status: :unprocessable_entity
+      render :edit, status: :unprocessable_entity, flash: { error: I18n.t("topic_update_unprocessable") }
     end
   end
 
@@ -43,7 +43,7 @@ class TopicsController < ApplicationController
     @topic = Topic.find(params[:id])
     @topic.destroy
 
-    redirect_to topics_path, status: :see_other
+    redirect_to topics_path, status: :see_other, flash: { success: I18n.t("topic_destroy_success") }
   end
 
   private

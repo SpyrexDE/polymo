@@ -1,12 +1,13 @@
-<h1><%= @topic.title %></h1>
+<article class="prose">
+  <h1><%= @topic.title %></h1>
 
-<p><%= @topic.body %></p>
+  <p><%= @topic.body %></p>
+</article>
 
-<ul>
-  <%= @member_signed_in %>
-  <li><%= link_to "Edit", edit_topic_path(@topic) %></li>
-  <li><%= link_to "Delete", topic_path(@topic), data: {
-                    turbo_method: :delete,
-                    turbo_confirm: "Are you sure?"
-                  } %></li>
-</ul>
+<div class="mt-10">
+  <%= link_to "Edit", edit_topic_path(@topic), class: "btn btn-primary" %>
+  <%= link_to "Delete", topic_path(@topic), class: "btn btn-primary" , data: {
+    turbo_method: :delete,
+    turbo_confirm: "Are you sure?"
+  } %>
+</div>
