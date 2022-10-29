@@ -2,16 +2,16 @@
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name), :html => {:class =>  "card glass p-10 w-96 m-auto"}) do |f| %>
   <h3 class="text-5xl"><strong>Log in</strong></h3>
-  <div class="field form-control w-full">
+  <div class="field form-control w-full my-5">
     <label class="label">
-      <%= f.label :email, class: "label-text"  %>
+      <%= f.label :email  %>
     </label>
     <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "input input-bordered w-full" %>
   </div>
 
   <div class="form-control w-full">
     <label class="label">
-      <%= f.label :password, class: "label-text"  %>
+      <%= f.label :password  %>
     </label>
     <%= f.password_field :password, autocomplete: "current-password", class: "input input-bordered w-full" %>
   </div>

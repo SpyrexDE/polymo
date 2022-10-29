@@ -33,18 +33,34 @@
       </label>
       <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
       <% if user_signed_in? %>
-        <li>
-          <a class="justify-between">
-            Profile
-            <span class="badge">New</span>
-          </a>
-        </li>
+        <li><%= link_to "Profile", profile_path(current_user) %></li>
         <li><a>Settings</a></li>
         <li><%= link_to "Log out", destroy_user_session_path, data: { turbo_method: :delete } %></li>
       <% else %>
+      <li class="menu-title">
+        <span>Not logged in yet</span>
+      </li>
         <li><%= link_to "Log in", new_user_session_path , data: { turbo_method: :create } %></li>
+        <li><%= link_to "Register", new_user_registration_path , data: { turbo_method: :create } %></li>
       <% end %>
+      <li class="menu-title">
+        <span>Appearance</span>
+      </li>
+        <li>
+            <label class="label cursor-pointer">
+                <span class="label-text">🌙 Dark Mode</span>
+                <input id="theme_toggle" type="checkbox" class="toggle toggle-md" data-toggle-theme="dark,light" />
+            </label>
+        </li>
       </ul>
     </div>
   </div>
 </div>
+
+<script>
+    window.onload = function() {
+        if (document.documentElement.dataset.theme == 'dark') {
+            document.getElementById("theme_toggle").setAttribute('checked', "");
+        }
+    }
+</script>

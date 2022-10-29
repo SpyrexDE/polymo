@@ -1,29 +1,27 @@
-<h2>Sign up</h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), :html => {:class =>  "card glass p-10 w-96 m-auto"}) do |f| %>
+  <h3 class="text-5xl"><strong>Register</strong></h3>
+  <div class="field form-control w-full my-5">
+    <label class="label">
+      <%= f.label :email  %>
+    </label>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "input input-bordered w-full" %>
   </div>
 
-  <div class="field">
+  <div class="form-control w-full">
     <%= f.label :password %>
     <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
+      <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %>
+    <%= f.password_field :password, autocomplete: "new-password", class: "input input-bordered w-full" %>
   </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  <div class="form-control w-full">
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "input input-bordered w-full" %>
   </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
+  <div class="form-control w-full flex my-2">
+    <%= f.submit "Sign up", class: "btn w-40 m-auto"%>
   </div>
+  <%= render "devise/shared/links" %>
 <% end %>
-
-<%= render "devise/shared/links" %>

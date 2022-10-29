@@ -22,3 +22,8 @@ body {
     max-width: 75em;
     margin: 0 auto;
 }
+
+/* Overwrite the default light theme accent text color */
+[data-theme='light'] {
+    --ac: 175 44% 100%;
+}
