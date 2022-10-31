@@ -10,6 +10,18 @@ class ProfileController < ApplicationController
     
   end
 
+  def new
+    @profile = Profile.new
+  end
+
+  def create
+    @profile = Topic.new(profile_params)
+
+    if not @profile.avatar_seed
+        @profile.avatar_seed = rand(9999)
+    end
+  end
+
   def set_user
     @user = User.find(params[:id])
   end
@@ -19,4 +31,11 @@ class ProfileController < ApplicationController
       redirect_to profile_path, flash: { error: I18n.t("profile_edit_unauthorized") }
     end
   end
+
+  def reroll_avatar
+    @user.profile.avatar_seed = rand(9999)
+    @user.profile.save
+    redirect_to profile_path, flash: { success: I18n.t("profile_avatar_rerolled") }
+  end
+
 end

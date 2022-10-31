@@ -6,7 +6,7 @@
       </label>
       <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
         <li><%= link_to "Home", root_url %></li>
-        <li><a>Portfolio</a></li>
+        <li><a>Trending</a></li>
         <li><a>About</a></li>
       </ul>
     </div>
@@ -33,6 +33,9 @@
       </label>
       <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
       <% if user_signed_in? %>
+        <li class="menu-title">
+          <span>Account</span>
+        </li>
         <li><%= link_to "Profile", profile_path(current_user) %></li>
         <li><a>Settings</a></li>
         <li><%= link_to "Log out", destroy_user_session_path, data: { turbo_method: :delete } %></li>
