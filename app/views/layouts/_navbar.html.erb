@@ -28,7 +28,11 @@
     <div class="dropdown dropdown-end">
       <label tabindex="0" class="btn btn-ghost btn-circle avatar">
         <div class="w-10 rounded-full">
-          <img src="https://placeimg.com/80/80/people" />
+          <% if user_signed_in? %>
+            <img src="https://avatars.dicebear.com/api/personas/<%= current_user.profile.avatar_seed %>.svg" />
+          <% else %>
+            <img src="https://img.icons8.com/windows/452/login-as-user.png" class="scale-75 contrast-75"/>
+          <% end %>
         </div>
       </label>
       <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
