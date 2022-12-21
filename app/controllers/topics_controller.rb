@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 class TopicsController < ApplicationController
-  before_action  :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :validate_author, only: [:edit, :destroy]
 
   def index
     @topics = Topic.all
@@ -51,5 +52,12 @@ class TopicsController < ApplicationController
 
   def topic_params
     params.require(:topic).permit(:title, :body)
+  end
+
+  def validate_author
+    @topic = Topic.find(params[:id])
+    unless @topic.author_id == current_user.id
+      redirect_to topic_path, flash: { error: I18n.t("topic_must_be_author") }
+    end
   end
 end

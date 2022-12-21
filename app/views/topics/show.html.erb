@@ -1,13 +1,16 @@
 <article class="prose">
   <h1><%= @topic.title %></h1>
+  <kbd><%= User.find(@topic.author_id).profile.username %></kbd>
 
   <p><%= @topic.body %></p>
 </article>
 
-<div class="mt-10">
-  <%= link_to "Edit", edit_topic_path(@topic), class: "btn btn-primary" %>
-  <%= link_to "Delete", topic_path(@topic), class: "btn btn-primary" , data: {
-    turbo_method: :delete,
-    turbo_confirm: "Are you sure?"
-  } %>
-</div>
+<% if @topic.author_id == current_user.id %>
+  <div class="mt-10">
+    <%= link_to "Edit", edit_topic_path(@topic), class: "btn btn-primary" %>
+    <%= link_to "Delete", topic_path(@topic), class: "btn btn-primary" , data: {
+      turbo_method: :delete,
+      turbo_confirm: "Are you sure?"
+    } %>
+  </div>
+<% end %>

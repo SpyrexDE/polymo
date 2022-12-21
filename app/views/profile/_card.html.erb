@@ -9,6 +9,7 @@
               </button>
             </div>
         </div>
+      <% if profile.user == current_user %>
         <div tabindex="0" class="card compact dropdown-content shadow bg-base-100 rounded-box w-64">
           <div class="card-body">
             <h2 class="card-title">User avatars</h2>
@@ -19,6 +20,7 @@
             }}%>
           </div>
         </div>
+      <% end %>
     </div>
     <div>
         <div class="text-center">
