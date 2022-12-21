@@ -17,6 +17,7 @@ class TopicsController < ApplicationController
 
   def create
     @topic = Topic.new(topic_params)
+    @topic.author_id = current_user.id
 
     if @topic.save
       redirect_to @topic, flash: { success: I18n.t("topic_create_success") }
