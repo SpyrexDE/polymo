@@ -28,6 +28,9 @@ gem "stimulus-rails"
 gem "jbuilder"
 
 gem "devise"
+gem "acts_as_votable"
+gem 'acts_as_follower', github: 'tcocca/acts_as_follower', branch: 'master'
+gem "acts-as-taggable-on"
 
 gem "hotwire-rails"
 

@@ -1,16 +1,53 @@
-<article class="prose">
-  <h1><%= @topic.title %></h1>
-  <kbd><%= User.find(@topic.author_id).profile.username %></kbd>
+<div class="card glass p-10 m-auto">
+  <article class="prose">
+    <h1 class="!mb-0" ><%= @topic.title %></h1>
+    <kbd><%= User.find(@topic.author_id).profile.username %></kbd>
 
-  <p><%= @topic.body %></p>
-</article>
+    <p><%= @topic.body %></p>
+  </article>
 
-<% if @topic.author_id == current_user.id %>
-  <div class="mt-10">
-    <%= link_to "Edit", edit_topic_path(@topic), class: "btn btn-primary" %>
-    <%= link_to "Delete", topic_path(@topic), class: "btn btn-primary" , data: {
-      turbo_method: :delete,
-      turbo_confirm: "Are you sure?"
-    } %>
+  <% if @topic.author_id == current_user.id %>
+    <div class="mt-10">
+      <%= link_to "Edit", edit_topic_path(@topic), class: "btn btn-primary" %>
+      <%= link_to "Delete", topic_path(@topic), class: "btn btn-primary" , data: {
+        turbo_method: :delete,
+        turbo_confirm: "Are you sure?"
+      } %>
+    </div>
+  <% end %>
+</div>
+
+<div class="p-10">
+  <div class="prose mb-3">
+    <h2 class="prose !text-slate-700">Suggested Solutions</h2>
   </div>
-<% end %>
+
+  <div  class="place-content-center w-full grid grid-cols-1 md:grid-cols-2 ">
+
+    <div class="col-start-1 pr-5">
+      <div class="card h-60 bg-base-100 shadow-xl image-full">
+        <figure><img src="https://placeimg.com/400/225/arch" alt="Shoes" /></figure>
+        <div class="card-body">
+          <h2 class="card-title">Shoes!</h2>
+          <p>If a dog chews shoes whose shoes does he choose?</p>
+          <div class="card-actions justify-end">
+            <button class="btn btn-primary">View</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-start-2 pl-5">
+      <div class="card h-60 bg-base-100 shadow-xl">
+        <div class="card-body">
+          <h2 class="card-title">Card title!</h2>
+          <p>If a dog chews shoes whose shoes does he choose?</p>
+          <div class="card-actions justify-end">
+            <button class="btn btn-primary">View</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
