@@ -110,6 +110,8 @@ GEM
     erubi (1.11.0)
     globalid (1.0.0)
       activesupport (>= 5.0)
+    heroicon (1.0.0)
+      rails (>= 5.2)
     hotwire-rails (0.1.3)
       rails (>= 6.0.0)
       stimulus-rails
@@ -280,6 +282,7 @@ DEPENDENCIES
   capybara
   debug
   devise
+  heroicon
   hotwire-rails
   importmap-rails
   jbuilder

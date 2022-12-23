@@ -32,6 +32,8 @@ gem "acts_as_votable"
 gem 'acts_as_follower', github: 'tcocca/acts_as_follower', branch: 'master'
 gem "acts-as-taggable-on"
 
+gem "heroicon"
+
 gem "hotwire-rails"
 
 # Use Redis adapter to run Action Cable in production

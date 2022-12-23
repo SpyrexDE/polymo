@@ -1,13 +1,49 @@
-<div class="card glass p-10 m-auto">
-  <article class="prose">
-    <h1 class="!mb-0" ><%= @topic.title %></h1>
-    <kbd><%= User.find(@topic.author_id).profile.username %></kbd>
+<div class="card glass p-0 sm:p-10 m-auto">
+  <div class="w-full grid md:grid-cols-[auto_25rem]">
+    <article class="prose p-10 sm:p-0 ">
+      <h1 class="!mb-0"><%= @topic.title %></h1>
+      <kbd><%= User.find(@topic.author_id).profile.username %></kbd>
 
-    <p><%= @topic.body %></p>
-  </article>
+      <p><%= @topic.body %></p>
+    </article>
+
+    <div class="card md:border-2 border-gray-200 md:w-80 mt-5 md:m-auto md:mt-0 md:m-0 md:ml-auto h-fit">
+      <img src="https://placeimg.com/400/226/arch" class="w-full"/>
+
+      <div class="p-3 font-mono">
+        <span class="accent-gray-800 font-bold">Overview</span>
+        <ul>
+          <%
+            user = User.find(@topic.author_id)
+            profile = user.profile
+            fields = {
+            "Author": ["pencil", "<a class='hover:underline' href='".html_safe + profile_path(user) + "'><img class='w-8 -mt-2 inline' src='https://avatars.dicebear.com/api/personas/".html_safe + profile.avatar_seed + ".svg'/>".html_safe + profile.username + "</a>".html_safe],
+            "Tags": ["tag", "<span class='badge badge-outline badge-primary'>Tag1</span>".html_safe],
+            "Suggestions": ["rectangle-stack", rand(50)]
+          } %>
+          <% fields.each do |key, array| %>
+            <li class="border-b-gray-200 border-b last-of-type:border-b-0 py-2 grid grid-cols-2">
+                <span class="flex pr-2 items-center">
+                  <%= heroicon array[0], options: { class: "flex-shrink-0"}%>
+                  <div class="ml-2 break-all">
+                    <%= key %>
+                  </div>
+                </span>
+              <span class="items-center">
+                <%= array[1] %>
+              </span>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+
 
   <% if @topic.author_id == current_user.id %>
-    <div class="mt-10">
+    <div class="m-5 md:m-0 mt-10 w-full">
       <%= link_to "Edit", edit_topic_path(@topic), class: "btn btn-primary" %>
       <%= link_to "Delete", topic_path(@topic), class: "btn btn-primary" , data: {
         turbo_method: :delete,
@@ -17,16 +53,15 @@
   <% end %>
 </div>
 
-<div class="p-10">
+<div class="p-0 pt-10 sm:p-10">
   <div class="prose mb-3">
-    <h2 class="prose !text-slate-700">Suggested Solutions</h2>
+    <h2 class="prose !text-slate-700">Suggestions</h2>
   </div>
 
-  <div  class="place-content-center w-full grid grid-cols-1 md:grid-cols-2 ">
+  <div class="pr-5 grid grid-flow-row-dense gap-2 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
 
-    <div class="col-start-1 pr-5">
       <div class="card h-60 bg-base-100 shadow-xl image-full">
-        <figure><img src="https://placeimg.com/400/225/arch" alt="Shoes" /></figure>
+        <figure><img src="https://placeimg.com/400/225/arch" /></figure>
         <div class="card-body">
           <h2 class="card-title">Shoes!</h2>
           <p>If a dog chews shoes whose shoes does he choose?</p>
@@ -35,9 +70,7 @@
           </div>
         </div>
       </div>
-    </div>
 
-    <div class="col-start-2 pl-5">
       <div class="card h-60 bg-base-100 shadow-xl">
         <div class="card-body">
           <h2 class="card-title">Card title!</h2>
@@ -47,7 +80,6 @@
           </div>
         </div>
       </div>
-    </div>
   </div>
 
 </div>
