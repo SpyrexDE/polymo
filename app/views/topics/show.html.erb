@@ -7,8 +7,8 @@
       <p><%= @topic.body %></p>
     </article>
 
-    <div class="card md:border-2 border-gray-200 md:w-80 mt-5 md:m-auto md:mt-0 md:m-0 md:ml-auto h-fit">
-      <img src="https://placeimg.com/400/226/arch" class="w-full"/>
+    <div class="card rounded-none md:rounded-2xl md:border-2 border-gray-200 md:w-80 mt-5 md:m-auto md:mt-0 md:m-0 md:ml-auto h-fit">
+      <img src="https://placeimg.com/400/226/arch" class="w-full sm:rounded-2xl md:rounded-none"/>
 
       <div class="p-3 font-mono">
         <span class="accent-gray-800 font-bold">Overview</span>
@@ -42,7 +42,7 @@
 
 
 
-  <% if @topic.author_id == current_user.id %>
+  <% if current_user and @topic.author_id == current_user.id %>
     <div class="m-5 md:m-0 mt-10 w-full">
       <%= link_to "Edit", edit_topic_path(@topic), class: "btn btn-primary" %>
       <%= link_to "Delete", topic_path(@topic), class: "btn btn-primary" , data: {

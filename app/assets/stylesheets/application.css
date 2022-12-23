@@ -13,15 +13,10 @@
  *= require_tree .
  *= require_self
  */
-:root {
-    padding: 2em;
-    padding-top: 1em;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-body {
-    max-width: 75em;
-    margin: 0 auto;
-}
 
 /* Overwrite the default light theme accent text color */
 [data-theme='light'] {

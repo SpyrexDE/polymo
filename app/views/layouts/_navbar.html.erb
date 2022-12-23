@@ -11,7 +11,7 @@
       </ul>
     </div>
   </div>
-  <div class="navbar-center">
+  <div class="navbar-center hidden sm:block">
     <% puts request.fullpath %>
     <%= link_to ApplicationController::APPLICATION_TITLE, request.fullpath == "/" ? "#" : root_url, class: "btn btn-ghost normal-case text-xl font-bold" %>
   </div>
