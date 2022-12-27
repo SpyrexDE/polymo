@@ -1,7 +1,25 @@
-<div  class="place-content-center w-full grid grid-cols-1 md:grid-cols-2 ">
+<div  class="place-content-center w-full grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
 
-  <div class="col-start-1">
+  <div class="col-start-1 invisible sm:visible">
+    <!-- Tags Panel -->
+    <div class="card w-3/4 rounded-2xl border-2 border-gray-200 m-auto h-fit">
+      <div class="p-3 font-mono">
+        <span class="accent-gray-800 font-bold"> <%= heroicon "tag" %>Categories</span>
+        <ul class="mt-2">
 
+          <% 5.times do  %>
+            <li class="border-b-gray-200 border-b last-of-type:border-b-0 py-2">
+                <span class="flex pr-2 items-center">
+                  <div class="ml-2 break-all">
+                    <span class='badge badge-outline badge-primary'>Some Tag</span>
+                  </div>
+                </span>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+
+    </div>
   </div>
 
   <div class="col-start-2">
@@ -12,6 +30,10 @@
         <% end %>
     <% end %>
     <%= render "topic_new"%>
+  </div>
+
+  <div class="col-start-3">
+
   </div>
 </div>
 
