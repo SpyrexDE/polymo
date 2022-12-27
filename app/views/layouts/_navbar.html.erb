@@ -5,12 +5,17 @@
         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" /></svg>
       </label>
       <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-        <li><%= link_to "Home", root_url %></li>
-        <li><a>Trending</a></li>
-        <li><a>About</a></li>
+        <li><%= link_to heroicon("home", variant: :mini) + "Home", root_url %></li>
+        <li><a><%= heroicon "plus", variant: :mini%> Suggest Topic</a></li>
+        <li><a><%= heroicon "information-circle", variant: :mini %> About</a></li>
       </ul>
     </div>
+
+    <button class="btn btn-ghost btn-circle">
+      <%= heroicon "tag" %>
+    </button>
   </div>
+
   <div class="navbar-center hidden sm:block">
     <% puts request.fullpath %>
     <%= link_to ApplicationController::APPLICATION_TITLE, request.fullpath == "/" ? "#" : root_url, class: "btn btn-ghost normal-case text-xl font-bold" %>
@@ -31,7 +36,7 @@
           <% if user_signed_in? %>
             <img src="https://avatars.dicebear.com/api/personas/<%= current_user.profile.avatar_seed %>.svg" />
           <% else %>
-            <img src="https://img.icons8.com/windows/452/login-as-user.png" class="scale-75 contrast-75"/>
+            <%= heroicon "user", options: {class: "h-10"} %>
           <% end %>
         </div>
       </label>

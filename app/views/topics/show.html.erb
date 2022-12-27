@@ -18,6 +18,7 @@
             profile = user.profile
             fields = {
             "Author": ["pencil", "<a class='hover:underline' href='".html_safe + profile_path(user) + "'><img class='w-8 -mt-2 inline' src='https://avatars.dicebear.com/api/personas/".html_safe + profile.avatar_seed + ".svg'/>".html_safe + profile.username + "</a>".html_safe],
+            "Type": ["square-2-stack", "Topic"],
             "Tags": ["tag", "<span class='badge badge-outline badge-primary'>Tag1</span>".html_safe],
             "Suggestions": ["rectangle-stack", rand(50)]
           } %>
@@ -54,8 +55,9 @@
 </div>
 
 <div class="p-0 pt-10 sm:p-10">
-  <div class="prose mb-3">
+  <div class="prose mb-3 flex">
     <h2 class="prose !text-slate-700">Suggestions</h2>
+    <button class="btn btn-sm btn-ghost ml-3"><%= heroicon "plus", variant: :mini %>Add Suggestion</button>
   </div>
 
   <div class="pr-5 grid grid-flow-row-dense gap-2 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
@@ -71,15 +73,15 @@
         </div>
       </div>
 
-      <div class="card h-60 bg-base-100 shadow-xl">
-        <div class="card-body">
-          <h2 class="card-title">Card title!</h2>
-          <p>If a dog chews shoes whose shoes does he choose?</p>
-          <div class="card-actions justify-end">
-            <button class="btn btn-primary">View</button>
-          </div>
+    <div class="card h-60 bg-base-100 shadow-xl">
+      <div class="card-body">
+        <h2 class="card-title">Card title!</h2>
+        <p>If a dog chews shoes whose shoes does he choose?</p>
+        <div class="card-actions justify-end">
+          <button class="btn btn-primary">View</button>
         </div>
       </div>
+    </div>
   </div>
 
 </div>

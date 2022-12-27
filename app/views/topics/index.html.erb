@@ -1,6 +1,6 @@
-<div  class="place-content-center w-full grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
+<div  class="place-content-center w-full grid grid-cols-1 gap-4 md:grid-cols-3">
 
-  <div class="col-start-1 invisible sm:visible">
+  <div class="col-start-1 hidden sm:block">
     <!-- Tags Panel -->
     <div class="card w-3/4 rounded-2xl border-2 border-gray-200 m-auto h-fit">
       <div class="p-3 font-mono">
@@ -22,18 +22,12 @@
     </div>
   </div>
 
-  <div class="col-start-2">
-    <%= turbo_stream_from "topics"%>
-    <%= turbo_frame_tag "topics" do %>
-        <% @topics.each do |topic| %>
-          <%= render "topics/topic", topic: topic %>
-        <% end %>
-    <% end %>
-    <%= render "topic_new"%>
-  </div>
-
-  <div class="col-start-3">
-
-  </div>
+  <%= turbo_stream_from "topics", class: "hidden"%>
+  <%= turbo_frame_tag "topics", class: "col-span-2 grid gap-4 grid-cols-1 lg:grid-cols-2"  do %>
+      <% @topics.each do |topic| %>
+        <%= render "topics/topic", topic: topic %>
+      <% end %>
+      <%= render "topic_new" %>
+  <% end %>
 </div>
 

@@ -21,9 +21,9 @@ class TopicsController < ApplicationController
     @topic.author_id = current_user.id
 
     if @topic.save
-      redirect_to @topic, flash: { success: I18n.t("topic_create_success") }
+      redirect_to @topic, flash: { success: I18n.t('topic_create_success') }
     else
-      render :new, status: :unprocessable_entity, flash: { error: I18n.t("topic_create_unprocessable") }
+      render :new, status: :unprocessable_entity, flash: { error: I18n.t('topic_create_unprocessable') }
     end
   end
 
@@ -35,9 +35,9 @@ class TopicsController < ApplicationController
     @topic = Topic.find(params[:id])
 
     if @topic.update(topic_params)
-      redirect_to @topic, flash: { success: I18n.t("topic_update_success") }
+      redirect_to @topic, flash: { success: I18n.t('topic_update_success') }
     else
-      render :edit, status: :unprocessable_entity, flash: { error: I18n.t("topic_update_unprocessable") }
+      render :edit, status: :unprocessable_entity, flash: { error: I18n.t('topic_update_unprocessable') }
     end
   end
 
@@ -45,7 +45,7 @@ class TopicsController < ApplicationController
     @topic = Topic.find(params[:id])
     @topic.destroy
 
-    redirect_to topics_path, status: :see_other, flash: { success: I18n.t("topic_destroy_success") }
+    redirect_to topics_path, status: :see_other, flash: { success: I18n.t('topic_destroy_success') }
   end
 
   private
@@ -57,7 +57,7 @@ class TopicsController < ApplicationController
   def validate_author
     @topic = Topic.find(params[:id])
     unless @topic.author_id == current_user.id
-      redirect_to topic_path, flash: { error: I18n.t("topic_must_be_author") }
+      redirect_to topic_path, flash: { error: I18n.t('topic_must_be_author') }
     end
   end
 end

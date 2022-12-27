@@ -2,3 +2,4 @@
 en:
   hello: "Hello world"
   topic_create_success: "Topic created"
+  topic_create_unprocessable: "The topic could not be created"
