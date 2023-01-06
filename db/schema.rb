@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_22_134132) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_06_141526) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -74,6 +74,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_22_134132) do
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
+  create_table "suggestions", force: :cascade do |t|
+    t.integer "author_id"
+    t.string "title"
+    t.text "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["author_id"], name: "index_suggestions_on_author_id"
+  end
+
   create_table "topics", force: :cascade do |t|
     t.integer "author_id"
     t.string "title"
@@ -98,5 +107,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_22_134132) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "profiles", "users"
+  add_foreign_key "suggestions", "profiles", column: "author_id"
   add_foreign_key "topics", "profiles", column: "author_id"
 end

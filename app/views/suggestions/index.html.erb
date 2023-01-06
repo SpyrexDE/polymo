@@ -1,0 +1,12 @@
+<div  class="place-content-center w-full grid grid-cols-1 gap-4 md:grid-cols-3">
+
+  <%= turbo_stream_from "suggestions", class: "hidden"%>
+  <%= turbo_frame_tag "suggestions", class: "col-span-2 grid gap-4 grid-cols-1 lg:grid-cols-2"  do %>
+      <% @suggestions.each do |suggestion| %>
+        <%= render "suggestions/suggestion", suggestion: suggestion %>
+      <% end %>
+    <%#= render "suggestion_new" %>
+  <% end %>
+
+</div>
+
