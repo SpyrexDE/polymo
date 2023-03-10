@@ -31,14 +31,14 @@
       </div>
     </button>
     <div class="dropdown dropdown-end">
-      <label tabindex="0" class="btn btn-ghost btn-circle avatar">
-        <div class="w-10 rounded-full">
+      <label tabindex="0" class="btn btn-ghost btn-circle avatar flex items-center">
           <% if user_signed_in? %>
-            <img src="https://avatars.dicebear.com/api/personas/<%= current_user.profile.avatar_seed %>.svg" />
-          <% else %>
-            <%= heroicon "user", options: {class: "h-10"} %>
+            <div class="w-10 rounded-full">
+              <img src="https://avatars.dicebear.com/api/personas/<%= current_user.profile.avatar_seed %>.svg" />
+            </div>
+        <% else %>
+            <%= heroicon "user", options: {class: "flex items-center"} %>
           <% end %>
-        </div>
       </label>
       <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
       <% if user_signed_in? %>
