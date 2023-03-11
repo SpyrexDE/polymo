@@ -6,7 +6,7 @@
       </label>
       <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
         <li><%= link_to heroicon("home", variant: :mini) + "Home", root_url %></li>
-        <li><a><%= heroicon "plus", variant: :mini%> Suggest Topic</a></li>
+        <li><%= link_to heroicon("plus", variant: :mini) + "Suggest Topic", new_topic_url %></li>
         <li><a><%= heroicon "information-circle", variant: :mini %> About</a></li>
       </ul>
     </div>

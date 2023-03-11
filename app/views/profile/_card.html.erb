@@ -25,26 +25,32 @@
     <div>
         <div class="text-center">
             <div class="text-lg font-extrabold"><%= profile.username %></div>
-            <div class="text-base-content/70 my-3 text-sm"><%= profile.email %>
-                <br>
-                Global Illustration Observer
-                <br>
-                Business Alignment Developer
+            <div class="text-base-content/70 my-3 text-sm">Joined Polymo on<br>
+              <span class="badge"> <%= profile.created_at.strftime('%d.%m.%Y') %></span>
             </div>
         </div>
+        <br>
+        <div class="text-center">
+          <span class="text-center text-lg font-extrabold">Interests</span>
+        </div>
         <div class="mt-2 text-center">
-            <div class="badge badge-ghost">Design</div>
-            <div class="badge badge-ghost">Art</div>
-            <div class="badge badge-ghost">Illustration</div>
+            <div class="badge badge-ghost">Climate Change</div>
+            <div class="badge badge-ghost">Education</div>
+            <div class="badge badge-ghost">Society</div>
         </div>
     </div>
-    <div class="dropdown dropdown-top">
-        <div class="btn-group"><button class="btn btn-accent btn-sm">Follow</button><button class="btn btn-accent btn-sm">
+      <div class="flex flex-col w-full">
+        <div class="divider m-0"></div>
+      </div>
+      <div class="btn-group">
+        <button class="btn btn-accent btn-sm">Report</button>
+        <!-- <button class="btn btn-accent btn-sm" tabindex="0">
                 <svg
                     xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="h-6 w-6 stroke-current">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z">
                     </path>
-                </svg></button></div>
-    </div>
-</div>
+                </svg>
+        </button> !-->
+      </div>
+  </div>
