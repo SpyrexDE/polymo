@@ -1,0 +1,12 @@
+<%= turbo_frame_tag dom_id(suggestion) do%>
+  <div class="card bg-base-100 shadow-xl mb-5">
+    <img class="object-cover" src="https://placeimg.com/400/225/arch" />
+    <div class="card-body">
+      <h2 class="card-title"><%= suggestion.title %></h2>
+        <p><%= suggestion.body %></p>
+      <div class="card-actions justify-end">
+        <%= link_to "Open", topic_suggestion_path(suggestion.topic, suggestion), class: "btn btn-primary", data: { "turbo-frame": "_top" } %>
+      </div>
+    </div>
+  </div>
+<% end %>

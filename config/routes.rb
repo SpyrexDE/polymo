@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root 'topics#index'
 
-  resources :topics
-  resources :suggestions
+  resources :topics do
+    resources :suggestions
+  end
 end

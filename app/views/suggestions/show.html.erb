@@ -1,10 +1,10 @@
 <div class="card glass p-0 sm:p-10 m-auto">
   <div class="w-full grid md:grid-cols-[auto_25rem]">
     <article class="prose p-10 sm:p-0 ">
-      <h1 class="!mb-0"><%= @topic.title %></h1>
-      <kbd><%= User.find(@topic.author_id).profile.username %></kbd>
+      <h1 class="!mb-0"><%= @suggestion.title %></h1>
+      <kbd><%= User.find(@suggestion.author_id).profile.username %></kbd>
 
-      <p><%= @topic.body %></p>
+      <p><%= @suggestion.body %></p>
     </article>
 
     <div class="card rounded-none md:rounded-2xl md:border-2 border-gray-200 md:w-80 mt-5 md:m-auto md:mt-0 md:m-0 md:ml-auto h-fit">
@@ -14,13 +14,14 @@
         <span class="accent-gray-800 font-bold">Overview</span>
         <ul>
           <%
-            user = User.find(@topic.author_id)
+            user = User.find(@suggestion.author_id)
             profile = user.profile
             fields = {
             "Author": ["pencil", "<a class='hover:underline' href='".html_safe + profile_path(user) + "'><img class='w-8 -mt-2 inline' src='https://avatars.dicebear.com/api/personas/".html_safe + profile.avatar_seed + ".svg'/>".html_safe + profile.username + "</a>".html_safe],
-            "Type": ["square-2-stack", "Topic"],
+            "Type": ["square-2-stack", "Suggestion"],
+            "Topic": ["rectangle-group", "<a class='hover:underline' href='".html_safe + topic_path(@suggestion.topic) + "'>".html_safe + @suggestion.topic.title + "</a>".html_safe],
             "Tags": ["tag", "<span class='badge badge-outline badge-primary'>Tag1</span>".html_safe],
-            "Suggestions": ["rectangle-stack", @topic.suggestions.count]
+            "Arguments": ["rectangle-stack", rand(50)]
           } %>
           <% fields.each do |key, array| %>
             <li class="border-b-gray-200 border-b last-of-type:border-b-0 py-2 grid grid-cols-2">
@@ -43,10 +44,10 @@
 
 
 
-  <% if current_user and @topic.author_id == current_user.id %>
+  <% if current_user and @suggestion.author_id == current_user.id %>
     <div class="m-5 md:m-0 mt-10 w-full">
-      <%= link_to "Edit", edit_topic_path(@topic), class: "btn btn-primary" %>
-      <%= link_to "Delete", topic_path(@topic), class: "btn btn-primary" , data: {
+      <%= link_to "Edit", edit_topic_suggestion_path(@suggestion.topic, @suggestion), class: "btn btn-primary" %>
+      <%= link_to "Delete", topic_suggestion_path(@suggestion.topic, @suggestion), class: "btn btn-primary" , data: {
         turbo_method: :delete,
         turbo_confirm: "Are you sure?"
       } %>
@@ -54,17 +55,14 @@
   <% end %>
 </div>
 
-<div class="p-0 pt-10 sm:p-10">
-  <div class="prose mb-3 flex">
-    <h2 class="prose !text-slate-700">Suggestions</h2>
-    <%= link_to heroicon("plus", variant: :mini) +  "Add Suggestion", new_topic_suggestion_path(@topic), class: "btn btn-sm btn-ghost ml-3" %>
+<div class="p-0 pt-10 sm:p-10 grid grid-flow-row-dense gap-5 grid-cols-1 md:grid-cols-2">
+
+  <div class="prose bg-green-100 rounded-lg p-4 ring ring-green-300">
+      <h2 class="!text-lime-800">Pro</h2>
   </div>
 
+  <div class="prose bg-red-100 rounded-lg p-4 ring ring-red-300">
+    <h2 class="!text-red-800">Contra</h2>
+  </div>
+</div>
 
-
-    <%= turbo_stream_from "suggestions", class: "hidden"%>
-    <%= turbo_frame_tag "suggestions", class: "pr-5 grid grid-flow-row-dense gap-2 grid-cols-1 md:grid-cols-2 lg:grid-cols-3" do %>
-      <% @topic.suggestions.each do |suggestion| %>
-        <%= render "suggestions/suggestion", suggestion: suggestion %>
-      <% end %>
-    <% end %>

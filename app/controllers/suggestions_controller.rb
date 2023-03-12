@@ -11,19 +11,22 @@ class SuggestionsController < ApplicationController
     end
 
     def new
-      @suggestion = Suggestion.new
+      @topic = Topic.find(params[:topic_id])
+      @suggestion = @topic.suggestions.build
     end
 
     def create
-      @suggestion = Suggestion.new(suggestion_params)
+      @topic = Topic.find(params[:topic_id])
+      @suggestion = @topic.suggestions.build(suggestion_params)
       @suggestion.author_id = current_user.id
 
       if @suggestion.save
-        redirect_to @suggestion, flash: { success: I18n.t('suggestion_create_success') }
+        redirect_to topic_suggestion_path(@suggestion.topic, @suggestion), flash: { success: I18n.t('suggestion_create_success') }
       else
         render :new, status: :unprocessable_entity, flash: { error: I18n.t('suggestion_create_unprocessable') }
       end
     end
+
 
     def edit
       @suggestion = Suggestion.find(params[:id])
@@ -43,7 +46,7 @@ class SuggestionsController < ApplicationController
       @suggestion = Suggestion.find(params[:id])
       @suggestion.destroy
 
-      redirect_to suggestions_path, status: :see_other, flash: { success: I18n.t('suggestion_destroy_success') }
+      redirect_to topic_url(@suggestion.topic), status: :see_other, flash: { success: I18n.t('suggestion_destroy_success') }
     end
 
     private
