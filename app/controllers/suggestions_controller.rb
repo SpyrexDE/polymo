@@ -29,14 +29,15 @@ class SuggestionsController < ApplicationController
 
 
     def edit
-      @suggestion = Suggestion.find(params[:id])
+      @topic = Topic.find(params[:topic_id])
+      @suggestion = @topic.suggestions.find(params[:id])
     end
 
     def update
       @suggestion = Suggestion.find(params[:id])
 
       if @suggestion.update(suggestion_params)
-        redirect_to @suggestion, flash: { success: I18n.t('suggestion_update_success') }
+        redirect_to topic_suggestion_path(@suggestion), flash: { success: I18n.t('suggestion_update_success') }
       else
         render :edit, status: :unprocessable_entity, flash: { error: I18n.t('suggestion_update_unprocessable') }
       end
