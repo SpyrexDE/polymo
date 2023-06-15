@@ -57,15 +57,28 @@
 
 <div class="p-0 pt-10 sm:p-10 grid grid-flow-row-dense gap-5 grid-cols-1 md:grid-cols-2">
 
-  <div class="prose bg-green-50 rounded-lg p-4 ring ring-green-100">
-      <h2 class="!text-lime-800">Pro</h2>
-      <div class="prose card bg-base-100 p-4">
-        hello world
+  <div class="bg-green-50 rounded-lg p-4 ring ring-green-100 space-y-4">
+      <h2 class="text-lime-800 fw-700 text-2xl font-bold mb-5">Pro</h2>
+    <% 5.times do %>
+      <div class="card bg-base-100 p-4 shadow-lg">
+        <a href="#" class="text-primary font-semibold text-xl hover:underline">Investitionen in E-Autos</a>
+          <div class="prose">
+            Durch eine Staatliche Subventionierung sollen E-Autos gefördert werden, was zu weniger CO2-Emissionen führen soll.
+          </div>
       </div>
+    <% end %>
   </div>
 
-  <div class="prose bg-red-50 rounded-lg p-4 ring ring-red-100">
-    <h2 class="!text-red-800">Contra</h2>
+  <div class="bg-red-50 rounded-lg p-4 ring ring-red-100 space-y-4">
+    <h2 class="text-red-800 fw-700 text-2xl font-bold mb-5">Contra</h2>
+    <% 4.times do %>
+      <div class="card bg-base-100 p-4 shadow-lg">
+        <a href="#" class="text-primary font-semibold text-xl hover:underline">Investitionen in E-Autos</a>
+        <div class="prose">
+          Durch eine Staatliche Subventionierung sollen E-Autos gefördert werden, was zu weniger CO2-Emissionen führen soll.
+        </div>
+      </div>
+    <% end %>
   </div>
 </div>
 
