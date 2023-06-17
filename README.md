@@ -8,7 +8,8 @@
 [![Webpacker](https://img.shields.io/badge/Webpacker-%232B2B2B?style=for-the-badge&logo=webpack&color=2B2B2B)](https://github.com/rails/webpacker)
 
 ### A Platform for Political Education and Opinion Development
-<img width="910" src="https://github.com/SpyrexDE/polymo/assets/57133330/1c4f4ea9-2d56-4ade-835b-1205299fc344">
+<img width="910" src="https://github.com/SpyrexDE/polymo/assets/57133330/4bace05a-fdd4-400a-a8dd-567987e3f81a">
+
 
 Polymo is an innovative online platform designed to facilitate political education and foster the development of informed opinions on various political topics. With a structure similar to Wikipedia, Polymo offers a comprehensive collection of entries, each focusing on specific topics such as "Climate Change" or "School System".
 
@@ -40,8 +41,9 @@ With Polymo, individuals can enhance their understanding of political issues, ga
 ## Design docs
 (Mooted.org was renamed to Polymo.org)
 
-![RootPage, CategoryMenu](https://github.com/SpyrexDE/polymo/assets/57133330/f65a51f5-c301-4964-be60-927e93c30244)
-![RoughStructure](https://github.com/SpyrexDE/polymo/assets/57133330/fc3bc1a4-0bc4-4661-9885-dae9ffc4fe83)
-![SettingsMenu](https://github.com/SpyrexDE/polymo/assets/57133330/69bd6a75-9427-4baa-9946-5308ea73b386)
-![SuggestionView, NavBar menus](https://github.com/SpyrexDE/polymo/assets/57133330/7a7c25cb-8a92-4e7c-8a9a-ebdc2edb1786)
-![TopicView](https://github.com/SpyrexDE/polymo/assets/57133330/22b2bc40-b5e7-4f49-95c4-754917f7e2e6)
+![RootPage, CategoryMenu](https://github.com/SpyrexDE/polymo/assets/57133330/47bdfedc-b523-4412-a97c-297bb6e9047d)
+![RoughStructure](https://github.com/SpyrexDE/polymo/assets/57133330/6e7f7aea-20cc-48bc-9191-46ac09e2a62c)
+![SettingsMenu](https://github.com/SpyrexDE/polymo/assets/57133330/34893e23-86c1-4d9d-b99d-62cfe88260e3)
+![SuggestionView, NavBar menus](https://github.com/SpyrexDE/polymo/assets/57133330/98e9fee0-11f4-420c-b01a-767b5c316dfe)
+![TopicView](https://github.com/SpyrexDE/polymo/assets/57133330/83bc8c8b-01a2-4eb0-aa55-733f9a75d1fd)
+
