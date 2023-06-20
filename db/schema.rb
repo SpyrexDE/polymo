@@ -10,12 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_11_164843) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_06_141526) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
-    t.integer "record_id", null: false
-    t.integer "blob_id", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
     t.datetime "created_at", null: false
     t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
@@ -34,7 +34,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_11_164843) do
   end
 
   create_table "active_storage_variant_records", force: :cascade do |t|
-    t.integer "blob_id", null: false
+    t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
@@ -76,12 +76,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_11_164843) do
 
   create_table "suggestions", force: :cascade do |t|
     t.integer "author_id"
+    t.integer "topic_id"
     t.string "title"
     t.text "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "topic_id"
     t.index ["author_id"], name: "index_suggestions_on_author_id"
+    t.index ["topic_id"], name: "index_suggestions_on_topic_id"
   end
 
   create_table "topics", force: :cascade do |t|
