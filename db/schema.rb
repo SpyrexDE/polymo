@@ -77,6 +77,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_06_141526) do
   create_table "suggestions", force: :cascade do |t|
     t.integer "author_id"
     t.integer "topic_id"
+    t.integer "relative_id"
     t.string "title"
     t.text "body"
     t.datetime "created_at", null: false

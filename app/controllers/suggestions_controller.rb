@@ -7,7 +7,8 @@ class SuggestionsController < ApplicationController
     end
 
     def show
-      @suggestion = Suggestion.find(params[:id])
+      @topic = Topic.find(params[:topic_id])
+      @suggestion = @topic.suggestions.find_by(topic_id: params[:topic_id], relative_id: params[:relative_id])
     end
 
     def new
@@ -17,11 +18,15 @@ class SuggestionsController < ApplicationController
 
     def create
       @topic = Topic.find(params[:topic_id])
-      @suggestion = @topic.suggestions.build(suggestion_params)
+
+      last_suggestion = @topic.suggestions.order(:relative_id).last
+      new_relative_id = last_suggestion ? last_suggestion.relative_id + 1 : 1
+
+      @suggestion = @topic.suggestions.new(suggestion_params.merge(relative_id: new_relative_id))
       @suggestion.author_id = current_user.id
 
       if @suggestion.save
-        redirect_to topic_suggestion_path(@suggestion.topic, @suggestion), flash: { success: I18n.t('suggestion_create_success') }
+        redirect_to topic_suggestion_path(@suggestion.topic, @suggestion.relative_id), flash: { success: I18n.t('suggestion_create_success') }
       else
         render :new, status: :unprocessable_entity, flash: { error: I18n.t('suggestion_create_unprocessable') }
       end
@@ -30,21 +35,23 @@ class SuggestionsController < ApplicationController
 
     def edit
       @topic = Topic.find(params[:topic_id])
-      @suggestion = @topic.suggestions.find(params[:id])
+      @suggestion = @topic.suggestions.find_by(topic_id: params[:topic_id], relative_id: params[:relative_id])
     end
 
     def update
-      @suggestion = Suggestion.find(params[:id])
+      @topic = Topic.find(params[:topic_id])
+      @suggestion = @topic.suggestions.find_by(topic_id: params[:topic_id], relative_id: params[:relative_id])
 
       if @suggestion.update(suggestion_params)
-        redirect_to topic_suggestion_path(@suggestion), flash: { success: I18n.t('suggestion_update_success') }
+        redirect_to topic_suggestion_path(@suggestion.topic, @suggestion.relative_id), flash: { success: I18n.t('suggestion_update_success') }
       else
         render :edit, status: :unprocessable_entity, flash: { error: I18n.t('suggestion_update_unprocessable') }
       end
     end
 
     def destroy
-      @suggestion = Suggestion.find(params[:id])
+      @topic = Topic.find(params[:topic_id])
+      @suggestion = @topic.suggestions.find_by(topic_id: params[:topic_id], relative_id: params[:relative_id])
       @suggestion.destroy
 
       redirect_to topic_url(@suggestion.topic), status: :see_other, flash: { success: I18n.t('suggestion_destroy_success') }
@@ -57,7 +64,9 @@ class SuggestionsController < ApplicationController
     end
 
     def validate_author
-      @suggestion = Suggestion.find(params[:id])
+      @topic = Topic.find(params[:topic_id])
+      @suggestion = @topic.suggestions.find_by(topic_id: params[:topic_id], relative_id: params[:relative_id])
+
       unless @suggestion.author_id == current_user.id
         redirect_to suggestion_path, flash: { error: I18n.t('suggestion_must_be_author') }
       end

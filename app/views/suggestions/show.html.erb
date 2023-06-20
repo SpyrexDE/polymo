@@ -46,8 +46,8 @@
 
   <% if current_user and @suggestion.author_id == current_user.id %>
     <div class="m-5 md:m-0 mt-10 w-full">
-      <%= link_to "Edit", edit_topic_suggestion_path(@suggestion.topic, @suggestion), class: "btn btn-primary" %>
-      <%= link_to "Delete", topic_suggestion_path(@suggestion.topic, @suggestion), class: "btn btn-primary" , data: {
+      <%= link_to "Edit", edit_topic_suggestion_path(@suggestion.topic, @suggestion.relative_id), class: "btn btn-primary" %>
+      <%= link_to "Delete", topic_suggestion_path(@suggestion.topic, @suggestion.relative_id), class: "btn btn-primary" , data: {
         turbo_method: :delete,
         turbo_confirm: "Are you sure?"
       } %>

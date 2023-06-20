@@ -5,7 +5,7 @@
       <h2 class="card-title"><%= suggestion.title %></h2>
         <p><%= suggestion.body %></p>
       <div class="card-actions justify-end">
-        <%= link_to "Open", topic_suggestion_path(suggestion.topic, suggestion), class: "btn btn-primary", data: { "turbo-frame": "_top" } %>
+        <%= link_to "Open", topic_suggestion_path(suggestion.topic, suggestion.relative_id), class: "btn btn-primary", data: { "turbo-frame": "_top" } %>
       </div>
     </div>
   </div>

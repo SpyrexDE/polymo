@@ -4,6 +4,8 @@ class CreateSuggestions < ActiveRecord::Migration[7.0]
       t.references :author, foreign_key: { to_table: :profiles }
       t.references :topic, foreign_key: { to_table: :topics }
 
+      t.integer :relative_id
+
       t.string :title
       t.text :body
 
